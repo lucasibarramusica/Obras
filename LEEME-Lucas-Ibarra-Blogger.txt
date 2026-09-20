@@ -1,0 +1,20 @@
+LUCAS IBARRA — PLANTILLA BLOGGER
+
+1. Importá Lucas-Ibarra-Blogger-Plantilla.xml en Blogger.
+2. La plantilla tiene tres marcadores de imagen:
+   IMAGE_HERO_URL
+   IMAGE_STUDIO_URL
+   IMAGE_COVER_URL
+3. Subí los tres archivos WebP optimizados a Blogger (o a un alojamiento de imágenes) y reemplazá esos tres textos por sus URLs.
+4. AUDIO_URL puede reemplazarse por un enlace directo a un MP3 si querés usar el reproductor nativo.
+5. El botón de WhatsApp tiene un número de ejemplo. Reemplazá 5490000000000 por tu número real.
+6. El Instagram ya apunta a @lucasibarramusica.
+7. Para sumar futuras canciones/proyectos: creá una entrada normal de Blogger. Poné una imagen al comienzo de la entrada para que Blogger pueda generar la miniatura y usá el título + texto de la entrada como ficha del portfolio.
+8. La sección Portfolio toma automáticamente las entradas del blog y las muestra como tarjetas.
+
+IMÁGENES OPTIMIZADAS
+- lucas_1.webp: foto vertical principal, 1200 x 1800, aprox. 248 KB.
+- lucas_2.webp: foto vertical de la mansión, 1142 x 1800, aprox. 257 KB.
+- lucas_3.webp: portada cuadrada, 1200 x 1200, aprox. 200 KB.
+
+La plantilla ya no necesita React ni Tailwind: es HTML/CSS compatible con la estructura de temas de Blogger.
