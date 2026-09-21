@@ -1,52 +1,93 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="no-js">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-  <title>Lucas Ibarra — Un latido</title>
-  <meta name="description" content="Un latido — balada instrumental de Lucas Ibarra, grabada en Colón, Buenos Aires, con una Strandberg Boden roja."/>
+  <title>Lucas Ibarra — Guitarra clásica y composición</title>
+  <meta name="description" content="Lucas Ibarra, guitarrista y compositor de Colón, Buenos Aires. Último lanzamiento, videos, canciones y obras propias."/>
   <meta name="theme-color" content="#0a0a0a"/>
+  <meta name="author" content="Lucas Ibarra"/>
 
   <!-- Miniatura al compartir el link (WhatsApp, Instagram, etc.) -->
   <meta property="og:type" content="website"/>
-  <meta property="og:title" content="Lucas Ibarra — Un latido"/>
-  <meta property="og:description" content="Balada instrumental grabada en Colón, Buenos Aires."/>
+  <meta property="og:locale" content="es_AR"/>
+  <meta property="og:site_name" content="Lucas Ibarra"/>
+  <meta property="og:title" content="Lucas Ibarra — Guitarra clásica y composición"/>
+  <meta property="og:description" content="Último lanzamiento, videos, canciones y obras propias. Colón, Buenos Aires."/>
   <meta property="og:image" content="Images/lucas_3.webp"/>
   <meta name="twitter:card" content="summary_large_image"/>
 
   <!-- Favicon inline: evita el 404 sin agregar un archivo aparte -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%230a0a0a'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23ff2a2a'/%3E%3C/svg%3E"/>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230a0a0a'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23ff2a2a'/%3E%3C/svg%3E"/>
 
-  <!-- Tipografias -->
+  <!-- Conexiones anticipadas a los servicios externos: la pagina abre antes -->
   <link rel="preconnect" href="https://fonts.googleapis.com"/>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap"/>
+  <link rel="preconnect" href="https://i.ytimg.com"/>
+  <link rel="dns-prefetch" href="https://www.youtube-nocookie.com"/>
+  <link rel="dns-prefetch" href="https://open.spotify.com"/>
 
-  <!-- Estilos propios -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&amp;family=Inter:wght@300;400;500;600&amp;display=swap"/>
   <link rel="stylesheet" href="css/styles.css"/>
 
-  <!-- Logica de YouTube y Spotify. defer = no bloquea el dibujado de la pagina -->
+  <!-- Marca que si hay JavaScript, para que el menu se comporte distinto -->
+  <script>document.documentElement.classList.remove('no-js');</script>
+
+  <!-- Contenido y logica. defer = no bloquean el dibujado de la pagina -->
+  <script src="js/datos.js" defer></script>
   <script src="js/main.js" defer></script>
+
+  <!-- Datos para Google: quien es, donde toca y donde escucharlo -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "MusicGroup",
+    "name": "Lucas Ibarra",
+    "genre": ["Guitarra clásica", "Folklore argentino", "Tango"],
+    "foundingLocation": { "@type": "Place", "name": "Colón, Buenos Aires, Argentina" },
+    "sameAs": [
+      "https://www.youtube.com/@lucasibarramusica",
+      "https://instagram.com/lucasibarramusica"
+    ]
+  }
+  </script>
 </head>
 
-<body>
+<body data-pagina="inicio">
+
+  <a class="saltar" href="#contenido">Saltar al contenido</a>
 
   <!-- ====================================================================
-       NAVEGACION
+       HEADER
+       Arriba de todo se ve entero. Al scrollear se encoge y queda como
+       hamburguesa. El panel del menu lo arma js/main.js.
        ==================================================================== -->
-  <nav class="nav">
-    <span class="micro nav__loc">Colón — BA</span>
-    <div class="nav__links">
-      <a class="micro" href="#studio">Estudios</a>
-      <a class="micro" href="#portfolio">Obras</a>
-      <a class="micro" href="#videos">Videos</a>
-      <a class="micro" href="#videos">Canciones</a>
-    </div>
-  </nav>
+  <header class="encabezado">
+    <a class="marca" href="index.html" aria-label="Lucas Ibarra — inicio">
+      <span class="marca__sigla serif">LI</span>
+      <span class="marca__texto">
+        <span class="marca__nombre">Lucas Ibarra</span>
+        <span class="marca__rol">Colón — BA</span>
+      </span>
+    </a>
+
+    <nav class="nav-enlaces" aria-label="Secciones">
+      <a href="index.html" aria-current="page">Inicio</a>
+      <a href="canciones.html">Canciones</a>
+      <a href="videos.html">Videos</a>
+      <a href="obras.html">Obras</a>
+      <a href="estudio.html">Estudio</a>
+    </nav>
+
+    <button class="hamburguesa" type="button" aria-expanded="false" aria-controls="menu-principal">
+      <span class="hamburguesa__texto">Menú</span>
+      <span class="hamburguesa__lineas" aria-hidden="true"><span></span><span></span></span>
+    </button>
+  </header>
 
 
-  <main>
+  <main id="contenido">
 
     <!-- ==================================================================
          HERO
@@ -55,46 +96,76 @@
       <img class="hero__image"
            src="Images/lucas_1.webp"
            alt="Lucas Ibarra con su Strandberg Boden roja"
+           width="1200" height="1800"
            fetchpriority="high"/>
       <div class="hero__shade"></div>
       <div class="hero__gradient"></div>
-      <div class="hero__topshade"></div>
 
       <div class="wrap">
         <div class="hero__content">
-          <p class="micro hero__eyebrow">Single — 2026</p>
-          <h1 class="serif hero__title">Un<br/><em>latido</em></h1>
+          <p class="micro hero__eyebrow">Guitarra clásica · Composición · Colón, BA</p>
+
+          <h1 class="hero__title">Un<br/><em>latido</em></h1>
+
           <div class="hero__meta">
             <div>
-              <p class="hero__sub">Lucas Ibarra — single</p>
+              <p class="hero__sub">Lucas Ibarra — nuevo single</p>
               <p class="hero__status">Disponible próximamente</p>
             </div>
-            <a class="pill" href="#release">Ver lanzamiento</a>
+            <div class="acciones" style="margin-top:0">
+              <a class="boton boton--principal" href="#lanzamiento">Escuchar</a>
+              <a class="boton boton--secundario" href="#videos">Último video</a>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <div class="red-line"></div>
+      <span class="hero__scroll" aria-hidden="true">Bajar<i></i></span>
+    </section>
 
 
     <!-- ==================================================================
-         UN LATIDO  (foto + texto)
+         CINTA DE REPERTORIO
+         ================================================================== -->
+    <div data-montar="repertorio"></div>
+
+
+    <!-- ==================================================================
+         ULTIMO LANZAMIENTO
+         ================================================================== -->
+    <section class="section section--alt" id="lanzamiento">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="etiqueta etiqueta--vivo">Lo más nuevo</p>
+            <h2 class="section-title">El <span>lanzamiento.</span></h2>
+          </div>
+          <a class="micro section-head__nota" href="canciones.html">Todas las canciones →</a>
+        </div>
+
+        <div data-montar="lanzamiento" data-revelar></div>
+      </div>
+    </section>
+
+
+    <!-- ==================================================================
+         LA HISTORIA DETRAS (foto + texto)
          ================================================================== -->
     <section class="section">
       <div class="wrap split">
 
-        <div>
+        <div data-revelar>
           <div class="photo-tall">
             <img src="Images/lucas_2.webp"
                  alt="Lucas Ibarra con su Strandberg en Colón"
+                 width="1142" height="1800"
                  loading="lazy" decoding="async"/>
           </div>
           <div class="caption"><span>Colón, BA — 2026</span><i></i></div>
         </div>
 
-        <div class="copy">
-          <p class="label">Un latido</p>
+        <div class="copy" data-revelar>
+          <p class="etiqueta">Un latido</p>
           <h2 class="headline">Una balada instrumental<br/><span>hecha a mano.</span></h2>
 
           <div class="bodycopy">
@@ -120,203 +191,91 @@
 
 
     <!-- ==================================================================
-         LANZAMIENTO  (reproductor de Spotify)
+         ULTIMOS VIDEOS
+         El primero de DATOS.videos va grande; el resto, en el carrusel.
          ================================================================== -->
-    <section class="section section--alt" id="release">
-      <div class="wrap release">
-
-        <div class="release__cover">
-          <img src="Images/lucas_3.webp"
-               alt="Portada de Un latido"
-               loading="lazy" decoding="async"/>
-        </div>
-
-        <div class="release__info">
-          <div class="release__title">
-            <h3 class="serif">Un latido</h3>
-            <span>Lucas Ibarra</span>
-          </div>
-
-          <div class="release__card">
-            <!-- El reproductor lo inserta js/main.js con CONFIG.spotify -->
-            <div class="spotify" id="spotify"></div>
-
-            <div class="tags">
-              <span class="tag">Instrumental</span>
-              <span class="tag">Balada</span>
-              <span class="tag tag--red">Strandberg Boden</span>
-            </div>
-
-            <p>El reproductor se conecta directamente a Spotify: cuando se publique el single, aparece acá sin tocar nada más.</p>
-          </div>
-        </div>
-
-      </div>
-    </section>
-
-
-    <!-- ==================================================================
-         ULTIMOS VIDEOS  (YouTube)
-         ================================================================== -->
-    <section class="section" id="videos">
+    <section class="section section--alt" id="videos">
       <div class="wrap">
 
         <div class="section-head">
           <div>
-            <p class="label">Video</p>
+            <p class="etiqueta">Video</p>
             <h2 class="section-title">Últimos <span>videos.</span></h2>
           </div>
-          <a class="micro section-head__note"
-             href="https://www.youtube.com/@lucasibarramusica"
-             target="_blank" rel="noopener">Ver el canal →</a>
+          <a class="micro section-head__nota" href="videos.html">Ver todos los videos →</a>
         </div>
 
-        <!--
-          VIDEOS
-          --------------------------------------------------------------
-          Cada video se identifica por su ID: el código que aparece en el
-          link de YouTube después de "watch?v=".
+        <div data-montar="video-destacado" data-revelar></div>
 
-            https://www.youtube.com/watch?v=HTCWQuHNZcc
-                                            ^^^^^^^^^^^ este
+        <div style="margin-top:44px" data-montar="videos-carrusel" data-revelar></div>
 
-          PARA AGREGAR UN VIDEO NUEVO:
-          1. Copiá su ID del link de YouTube.
-          2. Poné ese ID en data-video y en la URL de la miniatura (van los
-             dos iguales) y en el href del enlace "Ver en YouTube".
-          3. Cambiá el título.
-
-          Las miniaturas salen de i.ytimg.com, que es público y no necesita
-          ninguna clave. Por eso se ven siempre, incluso abriendo el archivo
-          con doble click.
-        -->
-
-        <!-- VIDEO DESTACADO -->
-        <div class="video-feature" data-video="HTCWQuHNZcc">
-          <button class="video-feature__btn" type="button"
-                  aria-label="Reproducir: Patitos en el río">
-            <img src="https://i.ytimg.com/vi/HTCWQuHNZcc/maxresdefault.jpg"
-                 alt="" loading="lazy" decoding="async"/>
-            <span class="video-feature__play">
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-            </span>
-            <span class="video-feature__meta">
-              <span class="video-feature__title">"Patitos en el rio" (Miguel Ángel Ostoich)</span>
-              <span class="video-feature__date">Biblioteca Popular Mariano Moreno — 13/03/2026</span>
-            </span>
-          </button>
-        </div>
-        <a class="video-out" href="https://www.youtube.com/watch?v=HTCWQuHNZcc"
-           target="_blank" rel="noopener">Ver en YouTube ↗</a>
-
-        <!-- VIDEOS ANTERIORES -->
-        <div class="video-grid">
-
-          <a class="video-card" href="https://www.youtube.com/watch?v=ekryOqJA5fI"
-             target="_blank" rel="noopener">
-            <div class="video-card__thumb">
-              <img src="https://i.ytimg.com/vi/ekryOqJA5fI/maxresdefault.jpg"
-                   alt="" loading="lazy" decoding="async"/>
-            </div>
-            <div class="video-card__body">
-              <div class="video-card__date">Guitarra clásica</div>
-              <h3 class="video-card__title">"Milonga" (Jorge Cardoso)</h3>
-            </div>
-          </a>
-
-          <a class="video-card" href="https://www.youtube.com/watch?v=b72xQo7kSfM"
-             target="_blank" rel="noopener">
-            <div class="video-card__thumb">
-              <img src="https://i.ytimg.com/vi/b72xQo7kSfM/maxresdefault.jpg"
-                   alt="" loading="lazy" decoding="async"/>
-            </div>
-            <div class="video-card__body">
-              <div class="video-card__date">Guitarra clásica</div>
-              <h3 class="video-card__title">"Gato y Malambo" (Héctor Ayala)</h3>
-            </div>
-          </a>
-
-          <a class="video-card" href="https://www.youtube.com/watch?v=B32bcOtf704"
-             target="_blank" rel="noopener">
-            <div class="video-card__thumb">
-              <img src="https://i.ytimg.com/vi/B32bcOtf704/maxresdefault.jpg"
-                   alt="" loading="lazy" decoding="async"/>
-            </div>
-            <div class="video-card__body">
-              <div class="video-card__date">Composición propia</div>
-              <h3 class="video-card__title">"El sendero perdido" op. 1 (Lucas Ibarra)</h3>
-            </div>
-          </a>
-
-        </div>
+        <noscript>
+          <p class="bodycopy" style="margin-top:24px">
+            Los videos se cargan desde YouTube.
+            <a class="enlace-ext" href="https://www.youtube.com/@lucasibarramusica" target="_blank" rel="noopener">Abrir el canal <i>&#8599;</i></a>
+          </p>
+        </noscript>
 
       </div>
     </section>
 
 
     <!-- ==================================================================
-         PORTFOLIO
+         SHORTS
          ================================================================== -->
-    <section class="section section--alt" id="portfolio">
+    <section class="section">
       <div class="wrap">
 
         <div class="section-head">
           <div>
-            <p class="label">Obra</p>
-            <h2 class="section-title">Portfolio <span>musical.</span></h2>
+            <p class="etiqueta">Shorts</p>
+            <h2 class="section-title">Minutos <span>sueltos.</span></h2>
           </div>
-          <span class="micro section-head__note">Nuevas piezas aparecerán aquí</span>
+          <span class="micro section-head__nota">Piezas cortas, subidas seguido</span>
         </div>
 
-        <!--
-          Para agregar una pieza: copiá un bloque <article class="post-card">
-          entero y cambiale imagen, fecha, título, texto y enlace.
-        -->
-        <div class="posts-grid">
+        <div data-montar="shorts-carrusel" data-revelar></div>
 
-          <article class="post-card">
-            <a href="#release">
-              <div class="post-card__thumb">
-                <img src="Images/lucas_3.webp" alt="Portada de Un latido" loading="lazy" decoding="async"/>
-              </div>
-            </a>
-            <div class="post-card__body">
-              <div class="post-card__date">2026</div>
-              <h3 class="post-card__title"><a href="#release">Un latido</a></h3>
-              <p class="post-card__snippet">Balada instrumental grabada en Colón. Guitarra, silencio y tiempo detenido.</p>
-              <a class="post-card__more" href="#release">Abrir proyecto →</a>
-            </div>
-          </article>
+      </div>
+    </section>
 
-          <article class="post-card">
-            <a href="#videos">
-              <div class="post-card__thumb">
-                <img src="Images/lucas_2.webp" alt="Sesiones en Colón" loading="lazy" decoding="async"/>
-              </div>
-            </a>
-            <div class="post-card__body">
-              <div class="post-card__date">2026</div>
-              <h3 class="post-card__title"><a href="#videos">Sesiones en Colón</a></h3>
-              <p class="post-card__snippet">Registro del proceso de grabación en la mansión. Luz natural y madera.</p>
-              <a class="post-card__more" href="#videos">Abrir proyecto →</a>
-            </div>
-          </article>
 
-          <article class="post-card">
-            <a href="#studio">
-              <div class="post-card__thumb">
-                <img src="Images/lucas_1.webp" alt="El estudio" loading="lazy" decoding="async"/>
-              </div>
-            </a>
-            <div class="post-card__body">
-              <div class="post-card__date">2026</div>
-              <h3 class="post-card__title"><a href="#studio">El estudio</a></h3>
-              <p class="post-card__snippet">Un espacio abierto para trabajar, grabar y colaborar, sin apuro.</p>
-              <a class="post-card__more" href="#studio">Abrir proyecto →</a>
-            </div>
-          </article>
+    <!-- ==================================================================
+         CANCIONES (adelanto: las tres primeras)
+         ================================================================== -->
+    <section class="section section--alt">
+      <div class="wrap">
 
+        <div class="section-head">
+          <div>
+            <p class="etiqueta">Escuchar</p>
+            <h2 class="section-title">Las <span>canciones.</span></h2>
+          </div>
+          <a class="micro section-head__nota" href="canciones.html">Ver todas →</a>
         </div>
+
+        <div class="canciones" data-montar="canciones" data-limite="3"></div>
+
+      </div>
+    </section>
+
+
+    <!-- ==================================================================
+         OBRAS (adelanto: las tres primeras)
+         ================================================================== -->
+    <section class="section">
+      <div class="wrap">
+
+        <div class="section-head">
+          <div>
+            <p class="etiqueta">Obra</p>
+            <h2 class="section-title">Composiciones <span>propias.</span></h2>
+          </div>
+          <a class="micro section-head__nota" href="obras.html">Ver todas las obras →</a>
+        </div>
+
+        <div class="obras" data-montar="obras" data-limite="3"></div>
+
       </div>
     </section>
 
@@ -324,30 +283,41 @@
     <!-- ==================================================================
          ESTUDIO
          ================================================================== -->
-    <section class="section" id="studio">
+    <section class="section section--alt" id="estudio">
       <div class="wrap split">
 
-        <div>
-          <p class="label">Estudio</p>
+        <div data-revelar>
+          <p class="etiqueta">Estudio</p>
           <h2 class="headline">El estudio<br/><span>en Colón.</span></h2>
         </div>
 
-        <div class="studio-copy">
+        <div class="studio-copy" data-revelar>
           <div class="bodycopy">
             <p class="lead">Un espacio abierto para trabajar, grabar y colaborar. Sin apuro, sin vidriera.</p>
             <p>Acá hay instrumentos reales: guitarras, bajo, equipos, computadoras y cosas con historia. No es un local comercial; es un lugar donde la música pasa primero.</p>
             <p>El enfoque es simple: hacer sonar bien lo que haya para decir. Si tenés una canción, una idea o ganas de venir a tocar, charlamos.</p>
           </div>
 
-          <div class="actions">
-            <a class="button button--primary" href="https://instagram.com/lucasibarramusica" target="_blank" rel="noopener">Instagram</a>
-            <!-- OJO - NUMERO DE EJEMPLO: cambiá 5490000000000 por el número real -->
-            <a class="button button--secondary" href="https://wa.me/5490000000000" target="_blank" rel="noopener">WhatsApp</a>
+          <div class="acciones">
+            <a class="boton boton--principal" href="estudio.html">Conocer el estudio</a>
           </div>
 
-          <p class="micro studio-note">Colón, Buenos Aires · Visitas con cita previa</p>
+          <p class="micro studio-nota">Colón, Buenos Aires · Visitas con cita previa</p>
         </div>
 
+      </div>
+    </section>
+
+
+    <!-- ==================================================================
+         CIERRE
+         ================================================================== -->
+    <section class="cierre">
+      <div class="wrap wrap--angosto cierre__inner">
+        <p class="etiqueta">Contacto</p>
+        <h2 class="cierre__titulo">Si hay una idea, se prueba.</h2>
+        <p class="cierre__texto">Clases, grabaciones, arreglos o simplemente tocar un rato. Escribime por donde te quede más cómodo.</p>
+        <div class="acciones" data-montar="enlaces"></div>
       </div>
     </section>
 
@@ -359,8 +329,21 @@
        ==================================================================== -->
   <div class="wrap">
     <footer class="footer">
-      <span>© <span id="anio">2026</span> Lucas Ibarra — Músico instrumental</span>
-      <span>Hecho en Colón, con una Boden roja</span>
+      <div class="footer__fila">
+        <a class="footer__marca" href="index.html">Lucas Ibarra</a>
+        <nav class="footer__nav" aria-label="Pie de página">
+          <a href="canciones.html">Canciones</a>
+          <a href="videos.html">Videos</a>
+          <a href="obras.html">Obras</a>
+          <a href="estudio.html">Estudio</a>
+          <a href="https://www.youtube.com/@lucasibarramusica" target="_blank" rel="noopener">YouTube</a>
+          <a href="https://instagram.com/lucasibarramusica" target="_blank" rel="noopener">Instagram</a>
+        </nav>
+      </div>
+      <div class="footer__legal">
+        <span>© <span data-anio>2026</span> Lucas Ibarra — Guitarra clásica y composición</span>
+        <span>Hecho en Colón, con una Boden roja</span>
+      </div>
     </footer>
   </div>
 

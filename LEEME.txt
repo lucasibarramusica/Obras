@@ -1,0 +1,172 @@
+===============================================================================
+LUCAS IBARRA - SITIO WEB
+Guia rapida para actualizarlo sin saber programar
+===============================================================================
+
+QUE ES
+------
+Un sitio estatico: solo HTML, CSS y JavaScript. No necesita servidor, ni base
+de datos, ni claves de ningun servicio. Funciona abriendo index.html con doble
+click, y tambien subido a cualquier hosting (GitHub Pages, Netlify, Vercel,
+Hostinger, etc.).
+
+
+-------------------------------------------------------------------------------
+LO UNICO QUE HAY QUE TOCAR:  js/datos.js
+-------------------------------------------------------------------------------
+
+Todo el contenido del sitio vive en ese archivo: los videos, las canciones, las
+obras, los textos del estudio y los links a redes.
+
+Se abre con cualquier editor de texto (el Bloc de notas sirve). Adentro hay
+comentarios que explican cada seccion.
+
+REGLA DE ORO
+  El PRIMERO de cada lista es el mas nuevo, y es el que el sitio muestra mas
+  grande y primero. Para destacar algo, ponelo arriba de todo en su lista.
+
+Las paginas se arman solas leyendo ese archivo. Si agregas un video a la lista,
+aparece automaticamente en la portada Y en videos.html. No hay que copiar nada
+dos veces.
+
+
+COMO AGREGAR UN VIDEO NUEVO
+---------------------------
+1. Copia el id del video desde el link de YouTube:
+
+     https://www.youtube.com/watch?v=HTCWQuHNZcc
+                                     ^^^^^^^^^^^ esto
+
+2. Abri js/datos.js y busca la seccion "4. VIDEOS".
+3. Copia un bloque entero (desde { hasta },), pegalo ARRIBA DE TODO en la lista
+   y cambiale el id, el titulo, la fecha y la descripcion.
+
+Listo: ese video pasa a ser el destacado grande de la portada y de videos.html.
+
+Si el video es vertical (un Short), va en la seccion "5. SHORTS" en vez de en
+"4. VIDEOS". Ahi el link se ve asi:
+
+     https://www.youtube.com/shorts/_gNz4Fpdqtc
+                                    ^^^^^^^^^^^ esto
+
+Los Shorts tienen su propio carrusel vertical para que no se vean recortados.
+
+
+COMO AGREGAR UNA CANCION
+------------------------
+Busca la seccion "3. CANCIONES" en js/datos.js, copia un bloque y pegalo arriba.
+Cada cancion usa el reproductor que tenga cargado:
+
+  - Si le pones un id de Spotify  -> aparece el reproductor de Spotify.
+  - Si no, pero tiene un id de YouTube -> aparece el reproductor de YouTube.
+  - Si no tiene ninguno -> aparece un cartel de "proximamente".
+
+
+CUANDO SALGA EL SINGLE EN SPOTIFY
+---------------------------------
+1. En Spotify: Compartir > Copiar enlace. Queda algo asi:
+
+     https://open.spotify.com/track/4cOdK2wGLETKBW3PvgPWqT
+                                    ^^^^^^^^^^^^^^^^^^^^^^ esto es el id
+
+2. En js/datos.js, pega ese id en DOS lugares:
+     - seccion "2. LANZAMIENTO DESTACADO"  ->  spotify: { tipo:'track', id:'ACA' }
+     - seccion "3. CANCIONES", en "Un latido"  ->  lo mismo
+
+3. En la misma cancion, borra la linea "estado" del lanzamiento o cambiala por
+   "Ya disponible".
+
+El reproductor aparece solo. No hace falta tocar nada mas.
+
+
+FALTAN CARGAR (estan vacios a proposito)
+----------------------------------------
+En js/datos.js, seccion "1. DATOS DEL ARTISTA", hay tres campos vacios.
+Cada uno que se complete agrega su boton en el menu y en los bloques de
+contacto; los que quedan vacios simplemente no se muestran.
+
+  whatsapp: ''   ->  poner solo numeros, sin +, sin espacios y sin el 15.
+                     Ejemplo para un celular de Colon: '5492473123456'
+  email:    ''   ->  el mail de contacto
+  spotify:  ''   ->  el link al perfil de artista, cuando exista
+
+
+-------------------------------------------------------------------------------
+LAS PAGINAS
+-------------------------------------------------------------------------------
+
+  index.html      Portada. Tiene un adelanto de todo.
+  canciones.html  Cada cancion con titulo, descripcion y reproductor abajo.
+  videos.html     Reproductor grande arriba + carrusel con el resto.
+  obras.html      Composiciones, arreglos y proyectos propios.
+  estudio.html    El espacio, que se puede hacer, formacion y contacto.
+
+Todas comparten el mismo diseno. El menu es el mismo en las cinco y se arma
+solo desde js/main.js.
+
+Si queres cambiar los TEXTOS FIJOS de una pagina (titulos, bajadas), se editan
+directo en su archivo .html. Todo lo que sea contenido que cambia seguido
+(videos, canciones, obras) va en js/datos.js.
+
+
+-------------------------------------------------------------------------------
+LOS ARCHIVOS
+-------------------------------------------------------------------------------
+
+  js/datos.js     TODO el contenido. Es el archivo que se edita.
+  js/main.js      El comportamiento (menu, carruseles, reproductores).
+                  No hace falta tocarlo.
+  css/styles.css  Los estilos. Los colores estan al principio del archivo,
+                  en la seccion "01. TOKENS".
+  Images/         Las fotos.
+
+  Lucas-Ibarra-Blogger-Plantilla.xml
+  LEEME-Lucas-Ibarra-Blogger.txt
+      Son de la version vieja para Blogger. No los usa este sitio.
+      Se pueden borrar si no se va a usar Blogger.
+
+
+-------------------------------------------------------------------------------
+COSAS QUE YA ESTAN RESUELTAS
+-------------------------------------------------------------------------------
+
+- Mobile first: esta pensado primero para telefono y crece hacia escritorio.
+- El header se ve entero arriba de todo y, al scrollear, se encoge en una
+  hamburguesa discreta con fondo difuminado.
+- Los videos de YouTube NO se cargan hasta que alguien toca el play: primero se
+  ve solo la miniatura. Por eso el sitio abre rapido aunque haya 24 videos.
+- Se usa youtube-nocookie.com (el modo de privacidad del propio YouTube).
+- Si a un video le falta la miniatura grande, el sitio usa sola la chica.
+- Funciona con teclado y con lector de pantalla (menu, foco visible, textos
+  alternativos, enlace para saltar al contenido).
+- Respeta la opcion del sistema "reducir movimiento": si esta activada, se
+  apagan las animaciones.
+- Cada pagina tiene su titulo, su descripcion y su miniatura para cuando se
+  comparte el link por WhatsApp o Instagram.
+
+
+-------------------------------------------------------------------------------
+POR QUE LOS DATOS ESTAN EN UN .js Y NO EN UN .json
+-------------------------------------------------------------------------------
+Un archivo .json hay que ir a buscarlo con fetch(), y los navegadores lo
+bloquean por seguridad cuando la pagina se abre con doble click (sin servidor).
+Guardandolo como .js el contenido se carga siempre, con servidor o sin el.
+El formato de adentro es el mismo que un JSON.
+
+
+-------------------------------------------------------------------------------
+POR QUE NO SE USA LA API DE SPOTIFY NI LA DE YOUTUBE
+-------------------------------------------------------------------------------
+Las dos piden una clave secreta, y una clave secreta no se puede poner en un
+sitio estatico: cualquiera que abra el codigo de la pagina la ve. Spotify lo
+prohibe expresamente.
+
+Por eso se usan los reproductores oficiales (los "embed") y las miniaturas
+publicas de YouTube, que es la forma pensada justamente para sitios como este:
+no llevan credenciales, se actualizan solos y no se rompen.
+
+La contra es que la lista de videos no se actualiza sola: hay que agregar el
+video nuevo en js/datos.js. Son dos minutos y a cambio el sitio no depende de
+ninguna cuenta de desarrollador que pueda vencerse.
+
+===============================================================================
